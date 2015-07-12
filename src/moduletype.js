@@ -1,5 +1,5 @@
 // Filename: moduletype.js  
-// Timestamp: 2015.07.12-13:11:54 (last modified)
+// Timestamp: 2015.07.12-14:05:56 (last modified)
 // Author(s): bumblehead <chris@bumblehead.com>
 
 require('array.prototype.find');
@@ -11,18 +11,14 @@ var moduletype_iscjs = require('./moduletype_iscjs'),
 var moduletype = module.exports = (function (o) {
 
   o = Object.create({
-    type : function (filestr) {
-      return Object.keys(o).find(function (typefn) {
-        return o[typefn](filestr);
-      });
-    },
-    
     is : function (filestr) {
       if (typeof filestr !== 'string') {
         throw new Error('filestr must be a string');
       }
 
-      return o.type(filestr);
+      return Object.keys(o).find(function (typefn) {
+        return o[typefn](filestr);
+      });
     }
   });
 
