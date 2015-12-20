@@ -1,6 +1,6 @@
 {
   "name": "moduletype",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license" : "MIT",
   "readmeFilename": "README.md",
   "description": "Pass in the string representation of a file to get the file's module pattern. `moduletype` returns the module pattern type used by a script, for example 'cjs' or 'esm'.",

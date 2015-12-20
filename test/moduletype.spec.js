@@ -1,5 +1,5 @@
 // Filename: moduletype.spec.js  
-// Timestamp: 2015.07.12-13:41:49 (last modified)
+// Timestamp: 2015.12.19-16:58:04 (last modified)
 // Author(s): bumblehead <chris@bumblehead.com>  
 var fs = require('fs'),
     moduletype = require('../src/moduletype');
@@ -20,6 +20,10 @@ var type_esm_arr = [
   './test/type_esm1.js'      
 ].map(read);
 
+var type_umd_arr = [
+  './test/type_umd1.js'      
+].map(read);
+
 var type_global_arr = [
   './test/type_global1.js'
 ].map(read);
@@ -38,6 +42,10 @@ describe("moduletype", function () {
   it("should identify the 'esm' module pattern", function () {
     expect( type_esm_arr.every( type_is('esm')) ).toBe( true );
   });
+
+  it("should identify the 'umd' module pattern", function () {
+    expect( type_umd_arr.every( type_is('umd')) ).toBe( true );
+  });  
 
   it("should identify the 'amd' module pattern", function () {
     expect( type_amd_arr.every( type_is('amd')) ).toBe( true );
