@@ -19,12 +19,14 @@ These formats are identified:
 
 ```javascript
 var amdfile = "define(['dep'] , function (d) { return function () {}; });",
+    bjsfile = "Object.defineProperty(exports, '__esModule', {",
     cjsfile = "module.exports = require('dep');",
     esmfile = "import {d} from './dep.js';",
     oldfile = "var global1 = dependency();";
 
 moduletype.is(amdfile);  // 'amd'
 moduletype.is(cjsfile);  // 'cjs'
+moduletype.is(bjsfile);  // 'bjs'
 moduletype.is(esmfile);  // 'esm'
 moduletype.is(oldfile);  // undefined
 
@@ -36,6 +38,9 @@ moduletype.amd(amdfile); // true
 
 moduletype.cjs(esmfile); // false
 moduletype.cjs(cjsfile); // true
+
+moduletype.bjs(esmfile); // false
+moduletype.bjs(bjsfile); // true
 ```
 
 [0]: http://bumblehead.com "bumblehead"
