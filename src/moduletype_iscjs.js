@@ -12,7 +12,7 @@ var moduletype_iscjs = module.exports = (function (exportsRe, requireRe) {
   exportsRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.])(exports\s*(\[['"]|\.)|module(\.exports|\['exports'\]|\["exports"\])\s*(\[['"]|[=,\.]))/;
   requireRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF."'])require\s*\(\s*("[^"\\]*(?:\\.[^"\\]*)*"|'[^'\\]*(?:\\.[^'\\]*)*')\s*\)/g;  
   
-  return function (filestr, isloose) {
+  return function (filestr) {
     exportsRe.lastIndex = 0;
     requireRe.lastIndex = 0;
 
