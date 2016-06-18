@@ -7,18 +7,15 @@
 // require('...') || exports[''] = ... || exports.asd = ... || module.exports = ...
 // RegEx adjusted from https://github.com/jbrantly/yabble/blob/master/lib/yabble.js#L339
 
-var moduletype_iscjs = module.exports = (function (exportstightRe, exportslooseRe, requireRe) {
+var moduletype_iscjs = module.exports = (function (exportsRe, requireRe) {
 
-  exportslooseRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.]|module\.)(exports\s*\[['"]|\exports\s*\.)|(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.])(module\.)?exports\s*\=/;
-  exportstightRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.]|module\.)(exports\s*\[['"]|\exports\s*\.)|(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.])module\.exports\s*\=/;
+  exportsRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.])(exports\s*(\[['"]|\.)|module(\.exports|\['exports'\]|\["exports"\])\s*(\[['"]|[=,\.]))/;
   requireRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF."'])require\s*\(\s*("[^"\\]*(?:\\.[^"\\]*)*"|'[^'\\]*(?:\\.[^'\\]*)*')\s*\)/g;  
   
   return function (filestr, isloose) {
-    var exportsRe = isloose ? exportslooseRe : exportstightRe;
-    
     exportsRe.lastIndex = 0;
     requireRe.lastIndex = 0;
 
-    return (requireRe.exec(filestr) || exportsRe.exec(filestr)) ? true : false;
+    return Boolean(requireRe.exec(filestr) || exportsRe.exec(filestr));
   };
 }());
