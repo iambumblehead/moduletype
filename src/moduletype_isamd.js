@@ -1,5 +1,5 @@
 // Filename: moduletype_isamd.js  
-// Timestamp: 2015.07.12-13:26:32 (last modified)
+// Timestamp: 2016.06.20-13:33:16 (last modified)
 // Author(s): Guy Bedford <guybedford@gmail.com>, bumblehead <chris@bumblehead.com>  
 //
 // https://github.com/systemjs/systemjs/blob/master/lib/amd.js#L10

@@ -1,5 +1,5 @@
 // Filename: moduletype.spec.js  
-// Timestamp: 2016.04.03-18:06:37 (last modified)
+// Timestamp: 2016.06.20-13:34:20 (last modified)
 // Author(s): bumblehead <chris@bumblehead.com>  
 var fs = require('fs'),
     moduletype = require('../src/moduletype');
@@ -12,9 +12,9 @@ var type_cjs_arr = [
   './test/type_cjs1.js'
 ].map(read);
 
-var type_bjs_arr = [
-  './test/type_bjs1.js'
-].map(read);
+//var type_bjs_arr = [
+//  './test/type_bjs1.js'
+//].map(read);
 
 var type_amd_arr = [
   './test/type_amd1.js'
@@ -39,9 +39,9 @@ var type_is = function (type) {
 };
 
 describe("moduletype", function () {
-  it("should identify the 'bjs' module pattern", function () {
-    expect( type_bjs_arr.every( type_is('bjs')) ).toBe( true );
-  });
+  //it("should identify the 'bjs' module pattern", function () {
+    //expect( type_bjs_arr.every( type_is('bjs')) ).toBe( true );
+  //});
   
   it("should identify the 'cjs' module pattern", function () {
     expect( type_cjs_arr.every( type_is('cjs')) ).toBe( true );
@@ -51,7 +51,9 @@ describe("moduletype", function () {
     expect( type_esm_arr.every( type_is('esm')) ).toBe( true );
   });
 
-  it("should identify the 'umd' module pattern", function () {
+    it("should identify the 'umd' module pattern", function () {
+        console.log(type_umd_arr.every( type_is('cjs')));
+        console.log(type_umd_arr.every( type_is('amd')));
     expect( type_umd_arr.every( type_is('umd')) ).toBe( true );
   });  
 
@@ -65,13 +67,13 @@ describe("moduletype", function () {
 
   it("should correctly handle the example shown in the README", function () {
     var amdfile = "define(['dep'] , function (d) { return function () {}; });",
-        bjsfile = "Object.defineProperty(exports, '__esModule', {",
+        //bjsfile = "Object.defineProperty(exports, '__esModule', {",
         cjsfile = "module.exports = require('dep');",
         esmfile = "import {d} from './dep.js';",
         oldfile = "var global1 = dependency();";
-
+      /*
     console.log(moduletype.is(amdfile));  // 'amd'
-    console.log(moduletype.is(bjsfile));  // 'bjs'    
+    //console.log(moduletype.is(bjsfile));  // 'bjs'    
     console.log(moduletype.is(cjsfile));  // 'cjs'
     console.log(moduletype.is(esmfile));  // 'esm'
     console.log(moduletype.is(oldfile));  // undefined    
@@ -84,9 +86,9 @@ describe("moduletype", function () {
 
     console.log(moduletype.cjs(esmfile)); // false
     console.log(moduletype.cjs(cjsfile)); // true
-
-    console.log(moduletype.bjs(esmfile)); // false
-    console.log(moduletype.bjs(bjsfile)); // true
+       */
+    //console.log(moduletype.bjs(esmfile)); // false
+    //console.log(moduletype.bjs(bjsfile)); // true
   });
 });
 

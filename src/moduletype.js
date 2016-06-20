@@ -5,7 +5,6 @@
 require('array.prototype.find');
 
 var moduletype_iscjs = require('./moduletype_iscjs'),
-    moduletype_isbjs = require('./moduletype_isbjs'),    
     moduletype_isamd = require('./moduletype_isamd'),
     moduletype_isumd = require('./moduletype_isumd'),    
     moduletype_isesm = require('./moduletype_isesm');
@@ -25,7 +24,6 @@ var moduletype = module.exports = (function (o) {
   });
 
   o.umd = moduletype_isumd;
-  o.bjs = moduletype_isbjs;    
   o.cjs = moduletype_iscjs;
   o.amd = moduletype_isamd;
   o.esm = moduletype_isesm;
