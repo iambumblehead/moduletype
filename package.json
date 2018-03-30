@@ -1,14 +1,17 @@
 {
   "name": "moduletype",
-  "version": "0.0.5",
-  "license" : "MIT",
+  "version": "0.0.6",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "description": "Pass in the string representation of a file to get the file's module pattern. `moduletype` returns the module pattern type used by a script, for example 'cjs' or 'esm'.",
   "author": "Guy Bedford <guybedford@gmail.com>",
-  "contributors": [{
-    "name": "bumblehead",
-    "email": "crhis@bumblehead.com"
-  }],
+  "main": "./src/moduletype",
+  "contributors": [
+    {
+      "name": "bumblehead",
+      "email": "crhis@bumblehead.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/iambumblehead/moduletype.git"
@@ -23,13 +26,11 @@
     "esm",
     "amd"
   ],
-  "dependencies": {
-    "array.prototype.find" : "~1.0.x"
+  "devDependencies": {
+    "jasmine": "2.5.3",
+    "jasmine-spec-reporter": "3.2.0"
   },
-  "devDependencies" : {
-    "jasmine-node" : "~1.14.x"
-  },
-  "scripts" : {
-    "test" : "node node_modules/jasmine-node/bin/jasmine-node --verbose test/"
+  "scripts": {
+    "test": "jasmine --verbose"
   }
 }

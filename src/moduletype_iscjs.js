@@ -7,15 +7,16 @@
 // require('...') || exports[''] = ... || exports.asd = ... || module.exports = ...
 // RegEx adjusted from https://github.com/jbrantly/yabble/blob/master/lib/yabble.js#L339
 
-var moduletype_iscjs = module.exports = (function (exportsRe, exportstightRe, requireRe) {
+module.exports = ((exportsRe, exportstightRe, requireRe) => {
 
   exportsRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.])(exports\s*(\[['"]|\.)|module(\.exports|\['exports'\]|\["exports"\])\s*(\[['"]|[=,\.])|typeof exports)/;
   requireRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF."'])require\s*\(\s*("[^"\\]*(?:\\.[^"\\]*)*"|'[^'\\]*(?:\\.[^'\\]*)*')\s*\)/g;  
   
-  return function (filestr) {
+  return filestr => {
     exportsRe.lastIndex = 0;        
     requireRe.lastIndex = 0;
 
-    return Boolean(requireRe.exec(filestr) || exportsRe.exec(filestr));
+    return Boolean(
+      requireRe.exec(filestr) || exportsRe.exec(filestr));
   };
-}());
+})();

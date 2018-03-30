@@ -4,10 +4,9 @@
 //
 // https://github.com/systemjs/systemjs/blob/master/lib/amd.js#L10
 
-var moduletype_isamd = module.exports = (function (amdRe) {
+module.exports = (amdRe => {
   amdRe = /(?:^\uFEFF?|[^$_a-zA-Z\xA0-\uFFFF.])define\s*\(\s*("[^"]+"\s*,\s*|'[^']+'\s*,\s*)?\s*(\[(\s*(("[^"]+"|'[^']+')\s*,|\/\/.*\r?\n|\/\*(.|\s)*?\*\/))*(\s*("[^"]+"|'[^']+')\s*,?)?(\s*(\/\/.*\r?\n|\/\*(.|\s)*?\*\/))*\s*\]|function\s*|{|[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*\))/;
   
-  return function (filestr) {
-    return amdRe.test(filestr);
-  };
-}());
+  return filestr =>
+    amdRe.test(filestr);
+})();
