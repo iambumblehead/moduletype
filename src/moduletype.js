@@ -1,5 +1,5 @@
 // Filename: moduletype.js  
-// Timestamp: 2016.04.03-17:56:34 (last modified)
+// Timestamp: 2018.03.30-03:52:00 (last modified)
 // Author(s): bumblehead <chris@bumblehead.com>
 
 const cjs = require('./moduletype_iscjs'),
@@ -7,7 +7,7 @@ const cjs = require('./moduletype_iscjs'),
       umd = require('./moduletype_isumd'),    
       esm = require('./moduletype_isesm');
 
-module.exports = {
+let o = module.exports = {
   umd,
   cjs,
   amd,
@@ -17,6 +17,6 @@ module.exports = {
     if (typeof filestr !== 'string')
       throw new Error('filestr must be a string');
 
-    return [ umd, esm, cjs, amd ].find(fn => fn(filestr));
+    return [ 'umd', 'esm', 'cjs', 'amd' ].find(fn => o[fn](filestr));
   }
 };
